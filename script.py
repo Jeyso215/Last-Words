@@ -1,6 +1,7 @@
-import smtplib, os, getpass, base64, keyring ## Install it `pip install keyring`, if you are using KWallet please see: https://github.com/jaraco/keyring#installation---linux
+import smtplib, os, getpass, base64, sys, keyring ## Install it `pip install keyring`, if you are using KWallet please see: https://github.com/jaraco/keyring#installation---linux
 from email.mime.text import MIMEText
-from datetime import timedelta, date
+from datetime import datetime, timedelta, date 
+
 ## Install it `pip install notify-run`, it's what make me send you the notifications
 # from notify_run import Notify 
 # import threading
@@ -27,7 +28,7 @@ def check_day():
    ## Check for the date as i said above!
     if today_date == str(date.today()):
         input("\n\nYou already checked today, Please come tomorrow!\n\n(Press Enter To Leave!)\n\n")
-        exit()
+        sys.exit()
     
     elif tomorrow_date == str(date.today()) and tomorrow_date_hash == str(encrypt_date(date.today())):
         login()
@@ -38,7 +39,7 @@ def check_day():
     
     else:
         send_email()
-        exit()
+         sys.exit()
 
 
 def login():
@@ -69,7 +70,7 @@ def login():
 
         if retry_password() != True:
             send_email()
-            exit()
+             sys.exit()
 
 
 def user_password():
@@ -140,7 +141,7 @@ def write_to_files(fileName, accessMode, data):
 def send_email():
     """This function send emails to people"""
 
-    messages("\n\nSeems you dead, RIP i'm going to send emails now\n\n")
+    messages("\n\nIt seems you are dead, Rest in piece you will be missed! I'm going to send emails now.\n\n")
 
     s = smtplib.SMTP('smtp.gmail.com', 587) ##You can change SMTP to your email's one, just ask their support! and type your login data as it's same as you just login with their login page
     s.starttls()
