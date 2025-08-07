@@ -1,8 +1,6 @@
-"""Dead man's script as an alt for dead man's switch website"""
-
-import smtplib, os, time, getpass, base64, keyring ## Install it `pip install keyring`, if you are using KWallet please see: https://github.com/jaraco/keyring#installation---linux
+import smtplib, os, getpass, base64, keyring ## Install it `pip install keyring`, if you are using KWallet please see: https://github.com/jaraco/keyring#installation---linux
 from email.mime.text import MIMEText
-from datetime import datetime, timedelta, date
+from datetime import timedelta, date
 ## Install it `pip install notify-run`, it's what make me send you the notifications
 # from notify_run import Notify 
 # import threading
@@ -204,5 +202,3 @@ def send_email():
 
 ## Start the app
 check_day()
-
-
